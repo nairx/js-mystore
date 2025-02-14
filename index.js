@@ -1,8 +1,8 @@
-const products = [
-  { id: 1, name: "P1", price: 34 },
-  { id: 2, name: "P2", price: 50 },
-  { id: 3, name: "P3", price: 40 },
-];
+// const products = [
+//   { id: 1, name: "P1", price: 34 },
+//   { id: 2, name: "P2", price: 50 },
+//   { id: 3, name: "P3", price: 40 },
+// ];
 
 const cart = {};
 const addToCart = (id) => {
@@ -19,14 +19,14 @@ const decrement = (id) => {
 };
 
 const displayCart = () => {
-  cartBox.style.display = "block"
-  productBox.style.display = "none"
-}
+  cartBox.style.display = "block";
+  productBox.style.display = "none";
+};
 
 const hideCart = () => {
- cartBox.style.display = "none"
- productBox.style.display = "block"
-}
+  cartBox.style.display = "none";
+  productBox.style.display = "block";
+};
 
 const deleteCart = (id) => {
   delete cart[id];
@@ -66,3 +66,11 @@ const showProducts = () => {
   });
   divProducts.innerHTML = str;
 };
+
+let products = "";
+fetch("products.json")
+  .then((response) => response.json()) // Parse JSON
+  .then((data) => products=data) // Work with JSON data
+  .then(showProducts())
+  .catch((error) => console.error("Error fetching JSON:", error));
+
