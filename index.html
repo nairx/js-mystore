@@ -8,12 +8,14 @@
     <script src="index.js"></script>
   </head>
   <body>
-    <h1>My Store</h1>
-    <h4 onclick="displayCart()">Cart:<span id="items"></span></h4>
+    <div class="header">
+      <h1>My Store</h1>
+      <h4 onclick="displayCart()">Cart:<span id="items"></span></h4>
+    </div>
+
     <hr />
 
     <div id="productBox">
-      <h3>Products</h3>
       <div id="divProducts"></div>
     </div>
 
@@ -23,5 +25,7 @@
       <h4>Order value:<span id="order"></span></h4>
       <button onclick="hideCart()">Close</button>
     </div>
+    <hr />
+    <h4>@Copyright 2025. All rights reserved.</h4>
   </body>
 </html>
