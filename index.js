@@ -3,6 +3,12 @@
 //   { id: 2, name: "P2", price: 50 },
 //   { id: 3, name: "P3", price: 40 },
 // ];
+let products = []
+
+fetch("products.json")
+  .then((response) => response.json()) 
+  .then((data) => (showProducts(data))) 
+  
 
 const cart = {};
 const addToCart = (id) => {
@@ -59,18 +65,21 @@ const showCart = () => {
   });
   divCart.innerHTML = str;
 };
-const showProducts = () => {
+const showProducts = (data) => {
+  products = data
   let str = "";
   products.map((value) => {
-    str += `<div>${value.id}-${value.name}-${value.price}-<button onclick='addToCart(${value.id})'>Add to Cart</button></div>`;
+    str += `
+    <div>
+    <img src='${value.url}'>
+    <h3>${value.name}</h3>
+    <p>${value.desc}</p>
+    <h4>${value.price}</h4>
+    <button onclick='addToCart(${value.id})'>Add to Cart</button>
+    </div>
+    `;
   });
   divProducts.innerHTML = str;
 };
 
-let products = "";
-fetch("products.json")
-  .then((response) => response.json()) // Parse JSON
-  .then((data) => products=data) // Work with JSON data
-  .then(showProducts())
-  .catch((error) => console.error("Error fetching JSON:", error));
 
